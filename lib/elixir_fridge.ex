@@ -14,6 +14,10 @@ defmodule Fridge do
     :gen_server.call(fridge, {:add_item, item})
   end
 
+  def remove_item(fridge, item) do
+    :gen_server.call(fridge, {:remove_item, item})
+  end
+
 
   # gen_server api
   def init(contents) do
@@ -25,6 +29,10 @@ defmodule Fridge do
   end
   def handle_call({:add_item, item}, _from, contents) do
     contents = [item|contents]
+    {:reply, contents, contents}
+  end
+  def handle_call({:remove_item, item}, _from, contents) do
+    contents = List.delete(contents, item)
     {:reply, contents, contents}
   end
 end
