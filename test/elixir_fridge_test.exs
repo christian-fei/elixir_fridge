@@ -4,6 +4,6 @@ defmodule FridgeTest do
 
   test "fridge is empty" do
     {:ok, fridge} = Fridge.start_link([])
-    # Fridge.get_items(fridge)
+    assert [] == Fridge.get_items(fridge)
   end
 end
