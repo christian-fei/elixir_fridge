@@ -1,7 +1,7 @@
 defmodule Fridge do
   use GenServer
   # public api
-  def start_link(contents) do
+  def start_link(contents \\ []) do
     :gen_server.start_link(__MODULE__, contents, [])
   end
 
